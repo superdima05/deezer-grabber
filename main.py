@@ -2,6 +2,8 @@ import requests
 import deezer
 from transliterate import translit
 import os
+from mutagen.flac import FLAC
+
 
 #SOON
 auth = 0 #Use deezer auth (0 = Use without auth, 1 = Use with auth)
@@ -40,6 +42,11 @@ def download(trlist):
         print(i[1].artist.name+" - "+i[1].title)
         trurl = "https://dz.loaderapp.info/deezer/1411/"+i[1].link
         d(trurl, "music/"+translit(i[1].title, "ru", reversed=True)+".flac")
+        audio = FLAC("music/"+translit(i[1].title, "ru", reversed=True)+".flac")
+        audio['albumartist'] = i[1].artist.name
+        audio['artist'] = i[1].artist.name
+        audio.save()
+
     print("Done")
 
 def mode():
