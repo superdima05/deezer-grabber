@@ -19,6 +19,10 @@ dcloud_url = "" #DCLOUD URL
 dcloud_token = "" #DCLOUD TOKEN
 #DCLOUD
 
+#Download server
+download_server = "" #URL to download server (http://github.com/superdima05/deezer-grabber-server/)
+#Download server
+
 music_dir = "music/"
 
 client = deezer.Client()
@@ -101,6 +105,8 @@ def download(trlist):
                             print("Dcloud message: "+dcl['message'])
         print(i[1].artist.name+" - "+i[1].title)
         trurl = "https://dz.loaderapp.info/deezer/1411/"+i[1].link
+        if(download_server != ""):
+            trurl = download_server+i[1].link
         d(trurl, music_dir+translit(i[1].title, "ru", reversed=True)+".flac")
         audio = FLAC(music_dir+translit(i[1].title, "ru", reversed=True)+".flac")
         audio['albumartist'] = i[1].artist.name
@@ -158,7 +164,7 @@ def mode():
         query = input("Search: ")
         result = client.search(query)
         for i in result:
-            print(i.artist.name+" - "+i.title+" | Album name: "+i.album.title+" ID: "+i.id)
+            print(i.artist.name+" - "+i.title+" | Album name: "+i.album.title+" ID: "+str(i.id))
     if(m == 5 or m == 6 or m == 7 or m == 8):
         dcl = dcloud(dcloud_token, dcloud_url, "auth", "")
         if(dcl == True):
@@ -296,6 +302,7 @@ def again():
         start()
     if(want == "0"):
         print("OK!")
+        exit()
     else:
         again()
 
