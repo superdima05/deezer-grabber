@@ -82,9 +82,9 @@ def getmode():
         getmode()
 
 def d(url, file_name):
-	with open(file_name, "wb") as file:
-		response = requests.get(url)
-		file.write(response.content)
+    with open(file_name, "wb") as file:
+        response = requests.get(url)
+        file.write(response.content)
 
 def download(trlist):
     global music_dir, m
@@ -110,7 +110,7 @@ def download(trlist):
         #d(trurl, music_dir+translit(i[1].title, "ru", reversed=True)+".flac")
         d(trurl, music_dir+translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac")
         audio = FLAC(music_dir+translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac")
-	audio['albumartist'] = i[1].artist.name
+        audio['albumartist'] = i[1].artist.name
         audio['artist'] = i[1].artist.name
         audio['comment'] = str(i[0])
         audio.save()
