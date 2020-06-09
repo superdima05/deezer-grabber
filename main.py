@@ -110,8 +110,8 @@ def download(trlist):
         #d(trurl, music_dir+translit(i[1].title, "ru", reversed=True)+".flac")
         d(trurl, music_dir+translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac")
         audio = FLAC(music_dir+translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac")
-            audio['albumartist'] = i[1].artist.name
-            audio['artist'] = i[1].artist.name
+        audio['albumartist'] = i[1].artist.name
+        audio['artist'] = i[1].artist.name
         audio['comment'] = str(i[0])
         audio.save()
 
