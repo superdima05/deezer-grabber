@@ -104,8 +104,9 @@ def download(trlist):
         trurl = "https://dz.loaderapp.info/deezer/1411/"+i[1].link
         if(download_server != ""):
             trurl = download_server+i[1].link
-        d(trurl, music_dir+translit(i[1].title, "ru", reversed=True)+".flac")
-        audio = FLAC(music_dir+translit(i[1].title, "ru", reversed=True)+".flac")
+        #d(trurl, music_dir+translit(i[1].title, "ru", reversed=True)+".flac")
+        d(trurl, music_dir+translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac")
+        audio = FLAC(music_dir+translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac")
         audio['albumartist'] = i[1].artist.name
         audio['artist'] = i[1].artist.name
         audio['comment'] = str(i[0])
