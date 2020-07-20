@@ -22,6 +22,12 @@ music_dir = "music_f/"
 
 client = deezer.Client()
 
+#Example from Django
+def get_valid_filename(s):
+    s = str(s).strip().replace(' ', '_')
+    return re.sub(r'(?u)[^-\w.]', '', s)
+#Example from Django
+
 def dcloud(token, url, method, data):
     if(url == ""):
         return ""
