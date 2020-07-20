@@ -28,6 +28,11 @@ music_dir = "music/"
 client = deezer.Client()
 arguments = sys.argv[1:]
 
+#Example from Django
+def get_valid_filename(s):
+    s = str(s).strip().replace(' ', '_')
+    return re.sub(r'(?u)[^-\w.]', '', s)
+#Example from Django
 
 def dcloud(token, url, method, data):
     if(url == ""):
@@ -82,6 +87,7 @@ def getmode():
         getmode()
 
 def d(url, file_name):
+    file_name = get_valid_filename(file_name)
     with open(file_name, "wb") as file:
         response = requests.get(url)
         file.write(response.content)
