@@ -80,7 +80,8 @@ def getmode():
     except Exception:
         getmode()
 
-def d(url, file_name):
+def d(url, file_name, dir):
+    file_name = dir+get_valid_filename(file_name)
     with open(file_name, "wb") as file:
         response = requests.get(url)
         file.write(response.content)
@@ -107,8 +108,8 @@ def download(trlist):
         if(download_server != ""):
             trurl = download_server+i[1].link
         #d(trurl, music_dir+translit(i[1].title, "ru", reversed=True)+".flac")
-        d(trurl, music_dir+translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac")
-        audio = FLAC(music_dir+translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac")
+        d(trurl, translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True)+".flac", music_dir)
+        audio = FLAC(music_dir+get_valid_filename(translit(i[1].artist.name+" - "+i[1].title, "ru", reversed=True))+".flac")
         audio['albumartist'] = i[1].artist.name
         audio['artist'] = i[1].artist.name
         audio['comment'] = str(i[0])
