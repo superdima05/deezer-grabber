@@ -1,10 +1,6 @@
-import requests
-import deezer
 from transliterate import translit
-import os
 from mutagen.flac import FLAC
-import json
-import sys
+import json, sys, re, os, deezer, requests
 
 
 
