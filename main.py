@@ -16,7 +16,7 @@ dcloud_token = "" #DCLOUD TOKEN
 #DCLOUD
 
 #Download server
-download_server = "" #URL to download server (http://github.com/superdima05/deezer-grabber-server/)
+download_server = "" #URL to download server (idk where you'll find it. go and buy subscription and use the offical app)
 #Download server
 
 music_dir = "music/"
